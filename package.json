@@ -1,0 +1,21 @@
+{
+  "name": "images-api",
+  "version": "1.0.0",
+  "description": "A simple api with images",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nina55555/images-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nina55555/images-api/issues"
+  },
+  "homepage": "https://github.com/nina55555/images-api#readme"
+}
