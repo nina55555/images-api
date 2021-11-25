@@ -17,5 +17,12 @@
   "bugs": {
     "url": "https://github.com/nina55555/images-api/issues"
   },
-  "homepage": "https://github.com/nina55555/images-api#readme"
+  "homepage": "https://github.com/nina55555/images-api#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "multer": "^1.4.3",
+    "nodemon": "^2.0.15",
+    "path": "^0.12.7"
+  }
 }
