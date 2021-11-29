@@ -13,12 +13,13 @@ function showAllImages() {
         for (const item of data){
             const cardsItem = document.createElement('div')
             cardsItem.classList.add('cards')
+            console.log(cardsItem)
 
             const imageItem = document.createElement('img')
             imageItem.classList.add('img')
             imageItem.src = item.imageURL
-            imageItem.src = ('images/images/1637878595338--pexels-messala-ciulla-942872.jpg')
             imageItem.setAttribute('alt', 'image of api')
+            console.log(imageItem)
 
             cardsItem.appendChild(imageItem)
             boxItems.appendChild(cardsItem)
