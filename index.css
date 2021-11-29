@@ -1,0 +1,17 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+.container {
+  background-color: darkslateblue;
+  width: 100vw;
+  height: 100vh;
+}
+
+.cards {
+  background-color: deeppink;
+  width: 200px;
+  height: 200px;
+}
+/*# sourceMappingURL=index.css.map */
