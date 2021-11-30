@@ -18,7 +18,6 @@ const PhotosModel = mongoose.model(
            type: String,
            require: true
         }
-        
     },
     "photos"
 )

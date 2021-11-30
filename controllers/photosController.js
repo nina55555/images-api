@@ -4,24 +4,25 @@ const router = express.Router();
 const ObjectId =require('mongoose').Types.ObjectId;
 
 
-
- 
-
 //recuperation des fichiers externes necessaires:
 const { PhotosModel } = require('../models/photosModel');
 
+
 //déclaration des fonctions du router methode CRUD:
 //pour lire les articles:
-router.get('/', (req, res) => {
+router.get('/photos', (req, res) => {
+   
     PhotosModel.find((err, docs) => {
-        if(!err) res.send (docs);
+        console.log(docs)
+        if(!err) res.send(docs);
+        
         else console.log ('error:'+ err);
     })
 });
 
 
 //pour créer des articles:
-router.post('/',(req, res) => {
+router.post('/new',(req, res) => {
     const newRecord = new PhotosModel({
         name: req.body.name,
         description: req.body.description,
