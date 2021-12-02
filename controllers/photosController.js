@@ -8,6 +8,8 @@ const ObjectId =require('mongoose').Types.ObjectId;
 const { PhotosModel } = require('../models/photosModel');
 
 
+
+
 //déclaration des fonctions du router methode CRUD:
 //pour lire les articles:
 router.get('/photos', (req, res) => {
@@ -28,6 +30,7 @@ router.post('/new',(req, res) => {
         description: req.body.description,
         imageURL: req.body.imageURL
     });
+        console.log(newRecord)
     newRecord.save((err, docs) => {
          if (!err) res.send (docs);
         else console.log ('error creating new data:' +err)

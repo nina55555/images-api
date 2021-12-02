@@ -5,14 +5,24 @@
 }
 
 .container{
-    background-color: darkslateblue;
+    //background-color: darkslateblue;
     width: 100vw;
     height: 100vh;
-    opacity: 0.2;
+    //opacity: 0.2;
 }
 
 .cards{
     background-color: deeppink;
     width: 200px;
     height: 200px;
+}
+
+.text-item{
+    font-size: 20px;
+}
+
+
+.img{
+    width: 85px;
+    height: 85px;
 }
