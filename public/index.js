@@ -1,4 +1,5 @@
 
+
 showAllImages();
 
 // firebaseAuth = require('firebase-auth')
@@ -11,7 +12,7 @@ showAllImages();
 // firebaseAuth.getUser('ABC1')
 
 function showAllImages(){ 
-fetch('http://127.0.0.1:5600/api/photos' /*, {mode: 'no-cors'}*/)
+fetch('http://127.0.0.1:5600/api/images' /*, {mode: 'no-cors'}*/)
     .then ((response) => response.json() )
       
      

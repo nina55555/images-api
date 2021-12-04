@@ -38,7 +38,9 @@ app.get('/test', function(req, res){
  
 
  //lancement du port:
- //app.listen(5500, () => console.log("Server listening on port 5500") );
+ //const PORT = process.env.PORT || 5600;
+ //app.listen(PORT, () => console.log(`server listening on port ${PORT}`) );
+
  const PORT = 5600
  app.listen(PORT, () => console.log("Server listening on port ", PORT) );
 

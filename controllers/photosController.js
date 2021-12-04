@@ -1,30 +1,53 @@
 //modules necessaires:
 const express = require('express');
 const router = express.Router();
+
+const mongoose = require('mongoose');
 const ObjectId =require('mongoose').Types.ObjectId;
+
+//initialiser multer
+
+const path = require('path');
+const multer = require('multer');
 
 
 //recuperation des fichiers externes necessaires:
 const { PhotosModel } = require('../models/photosModel');
 
+//gestion du storage de multer
+const storage = multer.diskStorage({
+    destination : path.join( __dirname,'../public', 'images' ),
+    filename : (req, file, cb) => {
+        cb(null, `../${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`);
+    }
+})
 
-
-
-//déclaration des fonctions du router methode CRUD:
-//pour lire les articles:
-router.get('/photos', (req, res) => {
-   
-    PhotosModel.find((err, docs) => {
-        console.log(docs)
-        if(!err) res.send(docs);
-        
-        else console.log ('error:'+ err);
-    })
-});
+const upload = multer({
+    storage : storage
+}).single('images');
 
 
 //pour créer des articles:
-router.post('/new',(req, res) => {
+router.post('/upload',(req, res) => {
+    upload (req, res, err =>{
+        if(err){
+            res.send(err)
+        }else{
+            console.log(req.file);
+
+            const newRecord = new PhotosModel({
+                name: req.file.fieldname,
+                imageURL: req.file.filename
+            });
+                console.log(newRecord)
+            newRecord.save((err, docs) => {
+                 if (!err) res.send (docs);
+                else console.log ('error creating new data:' +err)
+            })
+
+        }
+    })
+    /*
     const newRecord = new PhotosModel({
         name: req.body.name,
         description: req.body.description,
@@ -35,7 +58,22 @@ router.post('/new',(req, res) => {
          if (!err) res.send (docs);
         else console.log ('error creating new data:' +err)
     })
+    */
 } );
+
+
+//déclaration des fonctions du router methode CRUD:
+//pour lire les articles:
+router.get('/images', (req, res) => {
+   
+    PhotosModel.find((err, docs) => {
+        console.log(docs)
+        if(!err) res.send(docs);
+        
+        else console.log ('error:'+ err);
+    })
+});
+
 
 
 //pour modifier des articles:
