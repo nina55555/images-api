@@ -1,5 +1,5 @@
 # images-api
-A simple api with images
+A simple api with images using multer 
 
 
 
