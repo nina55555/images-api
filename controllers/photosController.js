@@ -76,6 +76,70 @@ router.get('/images', (req, res) => {
 
 
 
+//pour recuperer 1 seule image à la fois
+router.get('/:id', (req,res) =>{
+    if(!ObjectId.isValid(req.params.id))
+    return res.status(400).send('id non valide'+req.params.id)
+
+/*PhotosModel.findById(
+        req.params.id,
+        //console.log({_id : req.params.id}),
+        (err, docs) =>{
+            if(!err) res.send(docs);                
+            else console.log('update error:'+err);
+        }
+    )  
+*/                     
+                            
+                            PhotosModel.findById({_id : req.params.id},
+                                (err, docs) =>{
+                                    console.log(req.body);
+                                    console.log(req.body.imageURL);
+                                    if(!err) res.send(docs);
+
+                                    /*  
+                                    ///res.status(200).json({
+                                    message : "ok",
+                                    contenu : {_id : req.params.id}
+                                    })
+                                    ///
+                                    */
+                                    else console.log('update error:'+err);
+                                 }
+                            )
+                            
+});
+
+
+/*
+//
+router.getOneTeddy = (req, res, next) => {
+    PhotosModel.findById(req.params.id)
+    .then(
+      (image) => {
+        if (!image) {
+          return res.status(404).send(new Error('Image not found!'));
+        }
+        image.imageUrl = req.protocol + '://' + req.get('host') + '/images/' + image.imageUrl;
+        res.status(200).json(image);
+      }
+    )
+    .catch(
+      () => {
+        res.status(500).send(new Error('Database error!'));
+      }
+    )
+  };
+
+*/
+
+
+
+
+
+
+
+
 //pour modifier des articles:
 router.put('/:id', (req,res) =>{
     if(!ObjectId.isValid(req.params.id)
